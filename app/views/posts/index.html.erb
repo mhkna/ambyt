@@ -1,1 +1,6 @@
-INDEX FOR POSTS 
+<% @posts.each do |post| %>
+  <div class="post_wrap">
+    <p><%= link_to post.content, post %></p>
+    <p><%= post.created_at.strftime("%B, %d, %Y") %></p>
+  </div>
+<% end %>
