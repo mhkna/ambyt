@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <button><%= link_to "New Post", new_post_path %></button>
+
+    <% flash.each do |name, msg| %>
+      <%= content_tag(:div, msg, class: "alert") %>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>
