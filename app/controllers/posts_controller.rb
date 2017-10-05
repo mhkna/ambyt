@@ -1,10 +1,9 @@
 class PostsController < ApplicationController
   # before_action :authenticate_user!, except: [:index, :show]
   def index
-    @client_ip = remote_ip
-
-
-    @posts = Post.all.order('created_at DESC')
+    user_ip = remote_ip
+    user_coordinates = Geocoder.coordinates(user_ip)
+    @posts = Post.display_in_ambyt(user_coordinates, 10)
   end
 
   def new
