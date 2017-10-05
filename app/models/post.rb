@@ -10,13 +10,12 @@ class Post < ApplicationRecord
 
   def in_ambyt?(user_position, range)
     distance = Geocoder::Calculations.distance_between(self.coordinates, user_position)
-    return true if distance < range
-    return false
+    true if distance < range
   end
 
   def self.display_in_ambyt(user_position, range)
     posts = Post.order(created_at: :desc)
-    return posts.select { |post| post.in_ambyt?(user_position, range) }
+    posts.select { |post| post.in_ambyt?(user_position, range) }
   end
 
   # def in_box?(distance)
