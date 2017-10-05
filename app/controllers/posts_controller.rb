@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
   # before_action :authenticate_user!, except: [:index, :show]
-
   def index
+    @client_ip = remote_ip
+
+
     @posts = Post.all.order('created_at DESC')
   end
 
