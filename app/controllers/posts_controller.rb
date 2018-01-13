@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   def index
     user_ip = remote_ip
     user_coordinates = Geocoder.coordinates(user_ip)
-    @posts = Post.display_in_ambyt(user_coordinates, 10)
+    @posts = Post.display_in_ambyt(user_coordinates, 10000000000)
   end
 
   def new
