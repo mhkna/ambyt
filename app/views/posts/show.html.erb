@@ -1,18 +1,10 @@
 <p>
   <strong>Post:</strong>
   <%= @post.content %>
-  <!-- <%= @post.latitude %>
-  <%= @post.longitude %> -->
 </p>
 
 <h2>Comments</h2>
 <%= render @post.comments %>
-<!-- <% @post.comments.each do |comment| %>
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-<% end %> -->
 
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>
