@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
-  validates :text, presence: true,
+  validates :content, presence: true,
                      length: { minimum: 2 }
   validates :latitude, :longitude, presence: true
 
