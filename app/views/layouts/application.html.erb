@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ambyt</title>
+    <title>ambyt</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,14 +9,6 @@
   </head>
 
   <body>
-    <% unless current_page?(new_post_path) %>
-      <button><%= link_to "New Post", new_post_path %></button>
-    <% end %>
-
-    <% flash.each do |name, msg| %>
-      <%= content_tag(:div, msg, class: "alert") %>
-    <% end %>
-
     <%= yield %>
   </body>
 </html>

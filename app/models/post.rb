@@ -1,11 +1,18 @@
 class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
-  geocoded_by :ip
-  validates :content, presence: true, length: { maximum: 210 }
-  after_validation :geocode#, :if => :address_changed
+  validates :text, presence: true,
+                     length: { minimum: 2 }
+  validates :latitude, :longitude, presence: true
 
-  def coordinates
-    [self.latitude, self.longitude]
+  geocoded_by :ip_address
+  before_validation :geocode
+
+  def ip_address
+    # if @ip == "127.0.0.1"
+    "2620:0:2250:101c:1cfd:8a4f:162a:48eb"
+    # else
+    #   @ip
+    # end
   end
 
   def in_ambyt?(user_position, range)
@@ -17,15 +24,5 @@ class Post < ApplicationRecord
     posts = Post.order(created_at: :desc)
     posts.select { |post| post.in_ambyt?(user_position, range) }
   end
-
-  # def in_box?(distance)
-  #   box = self.view_area_box(distance)
-  #   return true if Post.within_bounding_box(box)
-  #   return false
-  # end
-  #
-  # def view_area_box(distance)
-  #   Geocoder::Calculations.bounding_box(self.coordinates, distance)
-  # end
 
 end

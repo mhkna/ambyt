@@ -1,8 +1,21 @@
-<% @posts.each do |post| %>
-  <div class="post_wrap">
-    <p><%= link_to post.content, post %></p>
-    <p><%= post.created_at.strftime("%B, %d, %Y") %></p>
-  </div>
-<% end %>
+<h1>Listing posts</h1>
+<%= @user_coords %>
+<%= link_to 'New post', new_post_path %>
+<table>
+  <tr>
+    <th>Text</th>
+  </tr>
 
-<%= @client_ip %>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.content %></td>
+      <td><%= time_ago_in_words(post.created_at, include_seconds: true) %></td>
+      <td>(<%= post.latitude %>, <%= post.longitude %>)</td>
+      <td><%= link_to 'Show', post_path(post) %></td>
+      <td><%= link_to 'Edit', edit_post_path(post) %></td>
+      <td><%= link_to 'Destroy', post_path(post),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
