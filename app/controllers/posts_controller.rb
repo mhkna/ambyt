@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   http_basic_authenticate_with name: "mk", password: "secret",
   except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     user_ip = request.remote_ip
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   def edit
@@ -32,7 +33,7 @@ class PostsController < ApplicationController
     # strong parameters ... req us to tell rails what params are allowed
     # @post = Post.new(params.require(:post).permit(:text))
     # the above line is often factored into own method so that it can be reused
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
 
     if @post.save
       redirect_to @post

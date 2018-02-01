@@ -14,13 +14,13 @@
     </div>
   <% end %>
 
-  <p>
+  <div class="form-group">
     <%= form.label :content %><br>
-    <%= form.text_area :content %>
-  </p>
+    <%= form.text_area :content, class: "form-control" %>
+  </div>
 
-  <p>
-    <%= form.submit %>
-  </p>
+  <div class="form-group">
+    <%= form.submit "Submit", class: "btn btn-lg btn-primary" %>
+  </div>
 
 <% end %>
