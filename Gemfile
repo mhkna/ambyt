@@ -1,4 +1,4 @@
-ruby '2.3.4'
+ruby '2.4.1'
 
 source 'https://rubygems.org'
 
@@ -7,7 +7,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'acts_as_votable', '~> 0.11.1'
 gem 'geocoder'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
