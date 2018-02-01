@@ -9,6 +9,21 @@
   </head>
 
   <body>
+
+    <header class="navbar navbar-default" role="navigation">
+      <div class="navbar-inner">
+        <div class="container">
+          <div id="logo" class="navbar-brand"><%= link_to "Ambyt", root_path %></div>
+          <nav class="collapse navbar-collapse navbar-ex1-collapse">
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <% flash.each do |name, msg| %>
+      <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
