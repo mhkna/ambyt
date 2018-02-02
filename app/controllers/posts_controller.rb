@@ -10,8 +10,9 @@ class PostsController < ApplicationController
     else
       @user_coords = Geocoder.coordinates(user_ip)
     end
-    #coords for library should be users
-    @posts = Post.near(@user_coords, 5).where(created_at: (Time.now - 1.hour)..Time.now).order(created_at: :desc)
+    #coords being displayed should be users coords
+    #order by most recent commented
+    @posts = Post.near(@user_coords, 25).where(created_at: (Time.now - 30.days)..Time.now).order(created_at: :desc)
   end
 
   def show
