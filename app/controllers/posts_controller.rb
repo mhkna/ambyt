@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     end
     #coords being displayed should be users coords
     #order by most recent commented
-    @posts = Post.near(@user_coords, 25).where(created_at: (Time.now - 30.days)..Time.now).order(created_at: :desc)
+    @posts = Post.near(@user_coords, 25).where(created_at: (Time.now - 30.days)..Time.now).order(created_at: :desc).page params[:page]
   end
 
   def show
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to @post
+      redirect_to action: "index"
     else
       render 'new'
     end

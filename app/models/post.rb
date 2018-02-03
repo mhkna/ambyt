@@ -1,9 +1,10 @@
 class Post < ApplicationRecord
+  paginates_per 10
   acts_as_votable
   belongs_to :user
   has_many :comments, dependent: :destroy
   validates :content, presence: true,
-                     length: { minimum: 2 }
+                     length: { minimum: 1 }
   validates :latitude, :longitude, presence: true
 
   geocoded_by :ip_address
