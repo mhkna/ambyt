@@ -1,4 +1,4 @@
-<h1>Listing posts</h1>
+<h1>Index</h1>
 <%= @user_coords %>
 <%= link_to 'New post', new_post_path %>
 
@@ -6,26 +6,29 @@
   <div class="link row clearfix">
 
     <div class="voting">
-      <%= link_to like_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
-      <span class="glyphicon glyphicon-chevron-up"></span>
+      <%= link_to like_post_path(post), method: :put do %>
+      <span class="up-arrow glyphicon glyphicon-chevron-up"></span>
       <% end %>
-      <span><%= post.weighted_score %></span>
-      <%= link_to dislike_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
-      <span class="glyphicon glyphicon-chevron-down"></span>
+      <span class="score"><%= post.weighted_score %></span>
+      <%= link_to dislike_post_path(post), method: :put do %>
+      <span class="down-arrow glyphicon glyphicon-chevron-down"></span>
       <% end %>
     </div>
 
-    <h4>
-      <div>
-        (<%= post.latitude %>, <%= post.longitude %>)REMOVE
-      </div>
-      <%= post.content %>
-      <small class="author"><%= time_ago_in_words(post.created_at, include_seconds: true) %> by <%= post.user != nil && post.user.name != nil ? post.user.name : "anonymous" %></small>
-      <%= link_to 'Show', post_path(post) %>
-      <%= link_to 'Edit', edit_post_path(post) %>
-      <%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </h4>
-    <%= post.distance.round %> miles away
+    <div class="post-content">
+      <h4>
+        <div>
+          (<%= post.latitude %>, <%= post.longitude %>)REMOVE
+        </div>
+        <%= post.content %>
+        <small class="author"><%= time_ago_in_words(post.created_at, include_seconds: true) %> by <%= post.user != nil && post.user.name != nil ? post.user.name : "anonymous" %></small>
+        <%= link_to 'Show', post_path(post) %>
+        <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </h4>
+      <%= post.distance.round %> miles away
+    </div>
+
   </div>
 <% end %>
 

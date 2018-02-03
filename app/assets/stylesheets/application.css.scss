@@ -58,5 +58,25 @@
  }
 
  .voting {
-   float: left
+   float: left;
+   position: relative;
+   width: 25px;
+   .up-arrow {
+     position: absolute;
+     left: 0;
+   }
+   .score {
+     position: absolute;
+     top: 15px;
+     left: 2px;
+   }
+   .down-arrow {
+     position: absolute;
+     top: 40px;
+     left: 0;
+   }
+ }
+
+ .post-content {
+   float: left;
  }
