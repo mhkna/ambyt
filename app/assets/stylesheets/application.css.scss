@@ -60,7 +60,6 @@
  .voting {
    float: left;
    position: relative;
-   width: 25px;
    .up-arrow {
      position: absolute;
      left: 0;
@@ -79,4 +78,5 @@
 
  .post-content {
    float: left;
+   margin-left: 30px;
  }
