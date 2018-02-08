@@ -17,6 +17,31 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:after {
+  content: '.';
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
  #logo {
  	font-size: 26px;
  	font-weight: 700;
