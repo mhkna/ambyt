@@ -6,16 +6,6 @@
 <% @posts.each do |post| %>
   <div class="link row clearfix">
 
-    <div class="voting">
-      <%= link_to like_post_path(post), method: :put do %>
-      <span class="up-arrow glyphicon glyphicon-chevron-up"></span>
-      <% end %>
-      <span class="score"><%= post.weighted_score %></span>
-      <%= link_to dislike_post_path(post), method: :put do %>
-      <span class="down-arrow glyphicon glyphicon-chevron-down"></span>
-      <% end %>
-    </div>
-
     <div class="pic">
       <%= image_tag post.picture.url(:normal) %>
     </div>
@@ -30,7 +20,22 @@
         <%= link_to 'Edit', edit_post_path(post) %>
         <%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
       </h4>
-      <%= post.distance.round %> miles away /// TEMP(<%= post.latitude %>, <%= post.longitude %>)
+
+      <div class="">
+        <%= post.distance.round %> miles away /// TEMP(<%= post.latitude %>, <%= post.longitude %>)
+      </div>
+
+      <div class="btn-group">
+        <%= link_to like_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
+          <span class="glyphicon glyphicon-chevron-up"></span>
+        <% end %>
+
+        <span class="score"><%= post.weighted_score %></span>
+        
+        <%= link_to dislike_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
+          <span class="glyphicon glyphicon-chevron-down"></span>
+        <% end %>
+      </div>
     </div>
 
   </div>
