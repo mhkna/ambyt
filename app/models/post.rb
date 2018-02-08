@@ -1,13 +1,13 @@
 class Post < ApplicationRecord
-  has_attached_file :avatar, styles: { small: "150x150>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
-  paginates_per 10
+  has_attached_file :picture, styles: { normal: "150x150>", thumb: "50x50>" }, default_url: "/images/:style/missing.jpg"
+  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
+  paginates_per 7
   acts_as_votable
   belongs_to :user
   has_many :comments, dependent: :destroy
   validates :content, presence: true,
                      length: { minimum: 1 }
-  validates :latitude, :longitude, presence: true
+  validates :latitude, :longitude,  presence: true
 
   geocoded_by :ip_address
   before_validation :geocode
