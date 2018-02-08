@@ -16,10 +16,14 @@
       <% end %>
     </div>
 
+    <div class="pic">
+      <%= image_tag post.avatar.url(:small) %>
+    </div>
+
     <div class="post-content">
       <h4>
         <div>
-          (<%= post.latitude %>, <%= post.longitude %>)REMOVE
+          (<%= post.latitude %>, <%= post.longitude %>)TEMP
         </div>
         <div class="main-content">
           <%= post.content %>
