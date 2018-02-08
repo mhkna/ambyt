@@ -81,27 +81,3 @@ body {
  		}
  	}
  }
-
- .voting {
-   float: left;
-   position: relative;
-   .up-arrow {
-     position: absolute;
-     left: 0;
-   }
-   .score {
-     position: absolute;
-     top: 15px;
-     left: 2px;
-   }
-   .down-arrow {
-     position: absolute;
-     top: 40px;
-     left: 0;
-   }
- }
-
- .post-content {
-   float: left;
-   margin-left: 30px;
- }
