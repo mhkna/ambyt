@@ -11,7 +11,7 @@ class PostsController < ApplicationController
       @user_coords = Geocoder.coordinates(user_ip)
     end
     @posts = Post.near(@user_coords, 100000).where(created_at: (Time.now - 30.days)..Time.now)
-            .joins(:comments).order("comments.created_at desc").page params[:page]
+            .order(updated_at: :desc).page params[:page]
   end
 
   def show

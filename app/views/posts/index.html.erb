@@ -21,9 +21,6 @@
         <%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
       </h4>
 
-      <div class="post-location">
-
-      </div>
 
       <div class="post-voting">
         <%= link_to like_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
@@ -34,13 +31,27 @@
           <span class="glyphicon glyphicon-chevron-down"></span>
         <% end %>
 
-        <span class="score"><%= post.weighted_score %></span>
+        <span class="score"><%= post.weighted_score %></span> | 
+        <span class="post-location">
+          <%= post.distance.round %> miles away /// TEMP(<%= post.latitude %>, <%= post.longitude %>)
+        </span>
       </div>
 
-      <div class="last-comment">
-        <%= render post.comments %>
+
+      <div class="index-recent-comments">
+        <% if post.comments.last %>
+          <div class="heading">
+            Recent Comments:
+          </div>
+          <% post.comments.last(2).each do |comment| %>
+            <div><%= comment.content %></div>
+          <% end %>
+        <% end %>
       </div>
+
     </div>
 
   </div>
 <% end %>
+
+<%= paginate @posts %>
