@@ -38,13 +38,13 @@
       </div>
 
 
-      <div class="index-recent-comments">
+      <div class="recent-comment-container">
         <% if post.comments.last %>
           <div class="heading">
             Recent Comments:
           </div>
           <% post.comments.last(2).each do |comment| %>
-            <div><%= comment.content %></div>
+            <div class="recent-comment"><%= comment.content %></div>
           <% end %>
         <% end %>
       </div>
