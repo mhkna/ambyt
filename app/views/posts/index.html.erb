@@ -22,7 +22,7 @@
       </h4>
 
       <div class="post-location">
-        <%= post.distance.round %> miles away /// TEMP(<%= post.latitude %>, <%= post.longitude %>)
+
       </div>
 
       <div class="post-voting">
@@ -36,9 +36,11 @@
 
         <span class="score"><%= post.weighted_score %></span>
       </div>
+
+      <div class="last-comment">
+        <%= render post.comments %>
+      </div>
     </div>
 
   </div>
 <% end %>
-
-<%= paginate @posts %>
