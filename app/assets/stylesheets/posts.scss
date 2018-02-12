@@ -13,10 +13,15 @@
   width: 150px;
 }
 
-.post-content {
+.post-content-container {
   background-color: rgb(231, 255, 236);
   margin-left: 165px;
   padding: 15px;
+  position: relative;
+}
+
+.main-content {
+  padding: 15px 0;
 }
 
 .new-post {
@@ -31,9 +36,37 @@
   padding: 15px;
 }
 
+.comment-info {
+  color: rgb(101, 101, 101);
+  font-size: 80%;
+}
+
+.comment-content {
+  padding-top: 5px;
+}
+
 .omitted-comments {
   color: rgb(101, 101, 101);
   display: table;
   font-size: 90%;
   margin-top: 5px;
+}
+
+.post-voting {
+  float: left;
+  margin-top: 4px;
+  width: 45px;
+}
+
+.author-details {
+  font-size: 90%;
+}
+
+.user-id {
+  color: green;
+  font-size: 110%;
+}
+
+.post-links {
+  font-size: 90%;
 }

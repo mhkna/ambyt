@@ -1,4 +1,6 @@
 <div class="post-show-container">
+  <span class="score"><%= @post.weighted_score %></span>
+  <%= link_to 'Edit', edit_post_path(@post) %>
   <h4>
     <%= @post.content %>
   </h4>
