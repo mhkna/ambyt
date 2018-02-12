@@ -4,9 +4,15 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.create(comment_params)
+    @comment = @post.comments.build(comment_params)
+    @comment.user = current_user
 
-    redirect_to posts_path
+    if @comment.save
+      redirect_to posts_path
+    else
+      redirect_to post_path(@post)
+    end
+
   end
 
   def destroy

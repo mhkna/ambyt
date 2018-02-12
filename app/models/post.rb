@@ -6,7 +6,9 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   validates :content, presence: true,
-                     length: { minimum: 1 }
+                     length: {
+                               maximum: 750
+                             }
   validates :latitude, :longitude,  presence: true
 
   geocoded_by :ip_address
