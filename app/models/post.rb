@@ -13,11 +13,7 @@ class Post < ApplicationRecord
   before_validation :geocode
 
   def ip_address
-    # if @ip == "127.0.0.1"
     "2620:0:2250:101c:1cfd:8a4f:162a:48eb"
-    # else
-    #   @ip
-    # end
   end
 
   def in_ambyt?(user_position, range)
