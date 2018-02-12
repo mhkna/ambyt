@@ -52,7 +52,12 @@
           <% post.comments.last(2).each do |comment| %>
             <div class="recent-comment">
               <div class="comment-info">
-                <%= comment.created_at.strftime('%H:%M %b %d') %>
+                <span class="user-id">
+                  <strong>
+                    <%= comment.user != nil && comment.user.name != nil ? comment.user.name : "anonymous" %>
+                  </strong>
+                </span>
+                . <%= comment.created_at.strftime('%H:%M %b %d') %>
               </div>
               <div class="comment-content">
                 <%= comment.content %>
