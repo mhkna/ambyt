@@ -27,6 +27,12 @@
   margin-top: 0;
 }
 
+.main-content {
+  background-color: rgb(231, 255, 236);
+  padding: 15px;
+  width: 100%;
+}
+
 .new-post {
   text-align: center;
 }
@@ -44,10 +50,11 @@
 }
 
 .row {
-  height: 250px;
+  width: 100%;
 }
 
 .recent-comment {
-  background-color: rgb(231, 255, 236);
+  background-color: rgb(238, 240, 230);
   margin: 5px 0;
+  padding: 15px;
 }
