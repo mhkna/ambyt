@@ -17,15 +17,5 @@ class Post < ApplicationRecord
   def ip_address
     "2620:0:2250:101c:1cfd:8a4f:162a:48eb"
   end
-
-  def in_ambyt?(user_position, range)
-    distance = Geocoder::Calculations.distance_between(self.coordinates, user_position)
-    true if distance < range
-  end
-
-  def self.display_in_ambyt(user_position, range)
-    posts = Post.order(created_at: :desc)
-    posts.select { |post| post.in_ambyt?(user_position, range) }
-  end
-
+  
 end

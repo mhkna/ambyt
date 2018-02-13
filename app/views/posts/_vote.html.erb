@@ -1,6 +1,10 @@
 <div id="vote_<%= post.id %>" class="post-voting">
   <%= link_to like_post_path(post), remote: true, method: :put, class: "btn btn-default btn-sm" do %>
-    <span class="glyphicon glyphicon-chevron-up"></span>
+    <% if post.upvote_from current_user %>
+      <span class="glyphicon glyphicon-chevron-up upvote"></span>
+    <% else %>
+      <span class="glyphicon glyphicon-chevron-up"></span>
+    <% end %>
   <% end %>
 
   <%= link_to dislike_post_path(post), remote: true, method: :put, class: "btn btn-default btn-sm" do %>
