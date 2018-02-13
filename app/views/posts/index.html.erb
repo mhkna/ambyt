@@ -3,10 +3,6 @@
   [ <%= link_to 'Create a New Post', new_post_path %> ]
 </div>
 
-<% if can? :manage, User %>
-	<p class="admin">Visible only User managers</p>
-<% end %>
-
 <div class="post-list-container">
   <% @posts.each do |post| %>
     <div class="link row clearfix">
