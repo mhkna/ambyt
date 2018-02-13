@@ -7,6 +7,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'rails_admin', '~> 1.2'
+gem "cancancan"
 gem "paperclip", "~> 5.2.1"
 gem 'kaminari'
 gem 'devise', '~> 4.2'
