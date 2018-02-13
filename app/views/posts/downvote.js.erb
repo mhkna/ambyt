@@ -1,0 +1,3 @@
+$(document).ready(function(){
+  $('#vote_<%= @post.id %>').html("<%= escape_javascript render :partial => 'vote', locals: { post: @post } %>");
+});

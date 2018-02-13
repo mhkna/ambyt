@@ -1,0 +1,60 @@
+<div class="link row clearfix">
+
+  <div class="pic">
+    <%= image_tag post.picture.url(:normal) %>
+  </div>
+
+  <div class="post-content-container">
+
+    <%= render partial: "vote", locals: { post: post } %>
+
+    <div class="post-content">
+        <div class="author-details">
+          <span class="user-id"><strong><%= post.user != nil && post.user.name != nil ? post.user.name : "anonymous" %></strong></span>
+          . <%= post.distance.round %> miles away
+          . <%= time_ago_in_words(post.created_at, include_seconds: true) %> ago
+        </div>
+      <h4 class="main-content">
+        <%= post.content %>
+      </h4>
+    </div>
+
+    <div class="post-links">
+      <% if post.comments.count <= 2 %>
+        <%= link_to 'Show', post_path(post) %>
+      <% end %>
+      <% if post.comments.count <= 2 && (can? :destroy, post) %>
+        |
+      <% end %>
+      <% if can? :destroy, post %>
+        <%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="recent-comment-container">
+    <% if post.comments.count > 2 %>
+      <div class="omitted-comments">
+        <%= post.comments.count %> total comments. <%= link_to 'Click here', post_path(post) %> to view.
+      </div>
+    <% end %>
+    <% if post.comments.last %>
+      <% post.comments.last(2).each do |comment| %>
+        <div class="recent-comment">
+          <div class="comment-info">
+            <span class="user-id">
+              <strong>
+                <%= comment.user != nil && comment.user.name != nil ? comment.user.name : "anonymous" %>
+              </strong>
+            </span>
+            . <%= comment.created_at.strftime('%H:%M %b %d') %>
+          </div>
+          <div class="comment-content">
+            <%= comment.content %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
