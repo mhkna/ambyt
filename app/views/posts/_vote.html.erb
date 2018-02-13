@@ -1,11 +1,11 @@
 <div id="vote_<%= post.id %>" class="post-voting">
-  <%= link_to like_post_path(post), remote: true, method: :put, class: "upvote btn btn-default btn-sm" do %>
-    <span class="glyphicon glyphicon-chevron-up vote"></span>
+  <%= link_to like_post_path(post), remote: true, method: :put, class: "btn btn-default btn-sm" do %>
+    <span class="glyphicon glyphicon-chevron-up"></span>
   <% end %>
 
-  <%= link_to dislike_post_path(post), remote: true, method: :put, class: "downvote btn btn-default btn-sm" do %>
-    <span class="glyphicon glyphicon-chevron-down vote"></span>
+  <%= link_to dislike_post_path(post), remote: true, method: :put, class: "btn btn-default btn-sm" do %>
+    <span class="glyphicon glyphicon-chevron-down"></span>
   <% end %>
 
-  <%= post.weighted_total %>
+  <%= post.weighted_score %>TMP
 </div>

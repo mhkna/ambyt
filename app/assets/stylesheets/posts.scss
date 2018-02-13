@@ -54,7 +54,6 @@
 
 .post-voting {
   float: left;
-  margin-top: 4px;
   width: 45px;
 }
 
@@ -76,6 +75,10 @@
   text-align: center;
 }
 
-.vote {
-  color: orange;
+.upvote {
+  color: green;
+}
+
+.downvote {
+  color: red;
 }
