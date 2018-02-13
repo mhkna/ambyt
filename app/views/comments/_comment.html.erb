@@ -1,10 +1,8 @@
-<p>
-  <strong>Comment:</strong>
+<div>
   <%= comment.content %>
-</p>
-
-<p>
-  <%= link_to 'Destroy Comment', [comment.post, comment],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-</p>
+  <% if can? :destroy, comment %>
+    <%= link_to '[ x ]', [comment.post, comment],
+    method: :delete,
+    data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</div>

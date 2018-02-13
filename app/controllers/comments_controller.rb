@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  load_and_authorize_resource
 
   def create
     @post = Post.find(params[:post_id])
