@@ -1,5 +1,15 @@
-<div>
-  <%= comment.content %>
+<div class="recent-comment">
+  <div class="comment-info">
+    <span class="user-id">
+      <strong>
+        <%= comment.user != nil && comment.user.name != nil ? comment.user.name : "anonymous" %>
+      </strong>
+    </span>
+    . <%= comment.created_at.strftime('%H:%M %b %d') %>
+  </div>
+  <div class="comment-content">
+    <%= comment.content %>
+  </div>
   <% if can? :destroy, comment %>
     <%= link_to '[ x ]', [comment.post, comment],
     method: :delete,

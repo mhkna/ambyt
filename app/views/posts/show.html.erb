@@ -1,29 +1,43 @@
-<div class="post-show-container">
-  <span class="score"><%= @post.weighted_score %></span>
-  <%= link_to 'Edit', edit_post_path(@post) %>
-  <h4>
-    <%= @post.content %>
-  </h4>
+<%= link_to '< back', posts_path %>
 
-  <div class="btn-group">
-    <%= link_to like_post_path(@post), method: :put, class: "btn btn-default btn-sm" do %>
-    <span class="glyphicon glyphicon-chevron-up"></span>
-    <%= @post.get_upvotes.size %>
-    <% end %>
-    <%= link_to dislike_post_path(@post), method: :put, class: "btn btn-default btn-sm" do %>
-    <span class="glyphicon glyphicon-chevron-down"></span>
-    <%= @post.get_downvotes.size %>
-    <% end %>
+<div>
+
+  <div class="pic">
+    <%= image_tag @post.picture.url(:normal) %>
   </div>
 
-  <div>
-    <%= link_to 'Destroy', post_path(@post),
-                           method: :delete,
-                           data: { confirm: 'Are you sure?' } %>
-    | <%= link_to 'Back', posts_path %>
+  <div class="post-content-container">
+
+    <%= render partial: "vote", locals: { post: @post } if user_signed_in? %>
+
+    <div class="post-content">
+        <div class="author-details">
+          <span class="user-id"><strong><%= @post.user != nil && @post.user.name != nil ? @post.user.name : "anonymous" %></strong></span>
+          . <%= @post.weighted_score %> points
+          . <%= time_ago_in_words(@post.created_at, include_seconds: true) %> ago
+        </div>
+      <h4 class="main-content">
+        <%= @post.content %>
+      </h4>
+    </div>
+
+    <div class="post-links">
+      <% if can? :update, @post %>
+        <%= link_to 'Edit', edit_post_path(@post) %>
+      <% end %>
+      <% if (can? :update, @post) && (can? :destroy, @post) %>
+        |
+      <% end %>
+      <% if can? :destroy, @post %>
+        <%= link_to 'Destroy', post_path(@post),
+                               method: :delete,
+                               data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
   </div>
-</div>
 
 <%= render @post.comments %>
 
 <%= render 'comments/form' %>
+
+</div>

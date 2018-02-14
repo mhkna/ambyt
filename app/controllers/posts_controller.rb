@@ -26,12 +26,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    # render plain: params[:post].inspect
-
-    # @post = Post.new(params[:post])
-    # strong parameters ... req us to tell rails what params are allowed
-    # @post = Post.new(params.require(:post).permit(:text))
-    # the above line is often factored into own method so that it can be reused
     @post = current_user.posts.build(post_params)
 
     if @post.save
@@ -55,7 +49,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
 
-    redirect_to posts_path
+    respond_to do |format|
+      format.html { redirect_to posts_path }
+      format.js
+    end
   end
 
   def upvote
