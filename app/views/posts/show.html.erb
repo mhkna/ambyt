@@ -36,7 +36,9 @@
     </div>
   </div>
 
-<%= render @post.comments %>
+<div id="comment-list">
+  <%= render @post.comments %>
+</div>
 
 <%= render 'comments/form' %>
 

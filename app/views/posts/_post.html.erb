@@ -1,4 +1,4 @@
-<div class="link row with_'<%= post.id %>' clearfix">
+<div class="link row clearfix">
 
   <div class="pic">
     <%= image_tag post.picture.url(:normal) %>
@@ -40,7 +40,7 @@
     <% end %>
     <% if post.comments.last %>
       <% post.comments.last(2).each do |comment| %>
-        <div class="recent-comment">
+        <div class="total-comment">
           <div class="comment-info">
             <span class="user-id">
               <strong>

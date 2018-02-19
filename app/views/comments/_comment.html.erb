@@ -1,4 +1,4 @@
-<div class="recent-comment">
+<div class="total-comment" id="comment_<%= comment.id %>">
   <div class="comment-info">
     <span class="user-id">
       <strong>
@@ -12,7 +12,9 @@
   </div>
   <% if can? :destroy, comment %>
     <%= link_to '[ x ]', [comment.post, comment],
-    method: :delete,
-    data: { confirm: 'Are you sure?' } %>
+      method: :delete,
+      data: { confirm: 'Are you sure?' },
+      remote: true
+    %>
   <% end %>
 </div>
