@@ -2,7 +2,7 @@
   <div class="comment-info">
     <span class="user-id">
       <strong>
-        <%= comment.user != nil && comment.user.name != nil ? comment.user.name : "anonymous" %>
+        <%= comment.user != nil && comment.user.name != nil && comment.user.name != "" ? comment.user.name : "anonymous" %>
       </strong>
     </span>
     . <%= comment.created_at.strftime('%H:%M %b %d') %>
