@@ -9,11 +9,12 @@
     <%= render partial: "vote", locals: { post: post } if user_signed_in? %>
 
     <div class="post-content">
-        <div class="author-details">
-          <span class="user-id"><strong><%= post.user != nil && post.user.name != nil && post.user.name != "" ? post.user.name : "anonymous" %></strong></span>
-          . <%= post.distance.round %> miles away
-          . <%= time_ago_in_words(post.created_at, include_seconds: true) %> ago
-        </div>
+      <div class="author-details">
+        <span class="user-id"><strong><%= post.user != nil && post.user.name != nil && post.user.name != "" ? post.user.name : "anonymous" %></strong></span>
+        . <%= post.distance.round %> miles away
+        . <%= time_ago_in_words(post.created_at, include_seconds: true) %> ago
+      </div>
+
       <h4 class="main-content">
         <%= post.content %>
       </h4>

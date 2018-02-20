@@ -29,7 +29,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to action: "index"
+      redirect_to posts_path
     else
       render 'new'
     end

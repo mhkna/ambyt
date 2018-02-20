@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  has_attached_file :picture, styles: { normal: "150x150>", thumb: "50x50>" }, default_url: "/images/:style/missing.jpg"
+  has_attached_file :picture, styles: { normal: "150x150>", thumb: "50x50#" }, default_url: "/images/:style/missing.jpg"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
   paginates_per 7
   acts_as_votable
@@ -17,5 +17,4 @@ class Post < ApplicationRecord
   def ip_address
     "2620:0:2250:101c:1cfd:8a4f:162a:48eb"
   end
-
 end
