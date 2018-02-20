@@ -7,21 +7,16 @@
   margin-top: 0;
 }
 
+.pic > img {
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+
 .pic {
   float: left;
   margin: 0 15px 0 0;
-  position: relative;
-  height: 150px;
   width: 150px;
-}
-
-.pic > img {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
 }
 
 .post-content-container {
