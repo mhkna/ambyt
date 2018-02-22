@@ -31,7 +31,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, notice: 'Post was successfully created.'
     else
-      render 'new'
+      render :new
     end
   end
 
