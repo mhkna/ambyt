@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  has_attached_file :picture, styles: { normal: "150x200>" }, default_url: "/images/:style/missing.jpg"
+  has_attached_file :picture, styles: { normal: "150x200>" }, default_url: "/images/:style/none.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
   paginates_per 7
   acts_as_votable
