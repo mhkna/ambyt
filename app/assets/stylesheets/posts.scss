@@ -21,6 +21,7 @@
 
 .post-content-container {
   background-color: rgb(231, 255, 236);
+  border-radius: 10px;
   margin-left: 165px;
   padding: 15px;
   position: relative;
@@ -35,7 +36,8 @@
 }
 
 .total-comment {
-  background-color: rgb(238, 240, 230);
+  background-color: rgb(238, 240, 230); 
+  border-radius: 10px;
   display: table;
   margin: 5px 0;
   min-width: 250px;
