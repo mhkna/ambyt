@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    user_ip = request.remote_ip
+    @user_ip = request.remote_ip
     @user_ip
     @hi = Geocoder.coordinates('12.34.246.63')
     if user_ip == "127.0.0.1"
