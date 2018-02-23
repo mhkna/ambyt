@@ -16,6 +16,6 @@ class Post < ApplicationRecord
   before_validation :geocode
 
   def ip_address
-    "2620:0:2250:101c:1cfd:8a4f:162a:48eb"
+    self.user.ip_address
   end
 end

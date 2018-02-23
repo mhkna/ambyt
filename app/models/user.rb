@@ -5,4 +5,8 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :comments
+
+  def ip_address
+    '12.34.246.63'
+  end
 end

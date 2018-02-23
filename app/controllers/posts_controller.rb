@@ -3,15 +3,15 @@ class PostsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @user_ip = request.remote_ip
-    @hi = Geocoder.coordinates('12.34.246.63')
-    if user_ip == "127.0.0.1"
-      @user_coords = [41.925127, -87.655331]
+    current_user_ip = remote_ip
+    if current_user_ip == '12.34.246.63'
+      @current_user_coords = [41.8781, 87.6298]
     else
-      @user_coords = Geocoder.coordinates(user_ip)
+      @current_user_coords = Geocoder.coordinates(current_user_ip)
     end
-    @posts = Post.near(@user_coords, 100000).where(created_at: (Time.now - 30.days)..Time.now)
-            .order(updated_at: :desc).page params[:page]
+
+    @posts = Post.near(@current_user_coords, 1000000).where(created_at: (Time.now - 3000.days)..Time.now)
+             .order(updated_at: :desc).page params[:page]
   end
 
   def show
@@ -28,6 +28,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    # @post.ip_address = request.remote_ip
 
     if @post.save
       redirect_to posts_path, notice: 'Post was successfully created.'
