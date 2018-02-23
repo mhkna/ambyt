@@ -8,6 +8,7 @@ class PostsController < ApplicationController
       @current_user_coords = [48.8566, 2.3522]
     else
       @current_user_coords = Geocoder.coordinates(current_user_ip)
+      @hit_else = "HII"
     end
 
     @posts = Post.near(@current_user_coords, 1000000).where(created_at: (Time.now - 3000.days)..Time.now)
