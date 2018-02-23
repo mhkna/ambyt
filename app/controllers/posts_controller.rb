@@ -3,9 +3,9 @@ class PostsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    current_user_ip = remote_ip
-    if current_user_ip == '78.125.0.209'
-      current_user_coords = [48.8566, 2.3522]
+    current_user_ip = request.remote_ip
+    if current_user_ip == '127.0.0.1'
+      current_user_coords = [42.3314, 83.0458]
     else
       current_user_coords = Geocoder.coordinates(current_user_ip)
     end
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    @post.ip_address = remote_ip
+    @post.ip_address = request.remote_ip
 
     if @post.save
       redirect_to posts_path, notice: 'Post was successfully created.'
