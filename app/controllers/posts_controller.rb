@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
     current_user_ip = remote_ip
     if current_user_ip == '78.125.0.209'
-      @current_user_coords = [41.8781, 87.6298]
+      @current_user_coords = [48.8566, 2.3522]
     else
       @current_user_coords = Geocoder.coordinates(current_user_ip)
     end
