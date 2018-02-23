@@ -5,13 +5,12 @@ class PostsController < ApplicationController
   def index
     current_user_ip = remote_ip
     if current_user_ip == '78.125.0.209'
-      @current_user_coords = [48.8566, 2.3522]
+      current_user_coords = [48.8566, 2.3522]
     else
-      @current_user_coords = Geocoder.coordinates(current_user_ip)
-      @hit_else = "HII"
+      current_user_coords = Geocoder.coordinates(current_user_ip)
     end
 
-    @posts = Post.near(@current_user_coords, 1000000).where(created_at: (Time.now - 3000.days)..Time.now)
+    @posts = Post.near(current_user_coords, 100000).where(created_at: (Time.now - 100000.days)..Time.now)
              .order(updated_at: :desc).page params[:page]
   end
 
