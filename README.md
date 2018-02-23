@@ -2,7 +2,7 @@
 
 ## [Hosted on Heroku](https://ambyt.herokuapp.com/posts)
 
-One Paragraph of project description goes here
+![screen shot](app/assets/images/ambyt-ss.png)
 
 ## Built With
 
