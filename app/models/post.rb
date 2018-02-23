@@ -14,8 +14,4 @@ class Post < ApplicationRecord
 
   geocoded_by :ip_address
   before_validation :geocode
-
-  def ip_address
-    self.user.ip_address
-  end
 end

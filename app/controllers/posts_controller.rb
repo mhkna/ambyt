@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    # @post.ip_address = request.remote_ip
+    @post.ip_address = remote_ip
 
     if @post.save
       redirect_to posts_path, notice: 'Post was successfully created.'
