@@ -1,4 +1,10 @@
-# README
+# Ambyt
+
+## [Hosted on Heroku](https://ambyt.herokuapp.com/posts)
+
+One Paragraph of project description goes here
+
+## Built With
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
@@ -20,6 +26,3 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
-* ...
-# ambyt
