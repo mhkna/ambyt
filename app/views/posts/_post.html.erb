@@ -10,7 +10,7 @@
 
     <div class="post-content">
       <div class="author-details">
-        <span class="user-id"><strong><%= post.user != nil && post.user.name != nil && post.user.name != "" ? post.user.name : "anonymous" %></strong></span>
+        <span class="user-id"><strong><%= name_or_anon(post) %></strong></span>
         . <%= post.distance.round %> miles away
         . <%= time_ago_in_words(post.created_at, include_seconds: true) %> ago
       </div>
@@ -45,7 +45,7 @@
           <div class="comment-info">
             <span class="user-id">
               <strong>
-                <%= comment.user != nil && comment.user.name != nil ? comment.user.name : "anonymous" %>
+                <%= name_or_anon(comment) %>
               </strong>
             </span>
             . <%= comment.created_at.strftime('%H:%M %b %d') %>
