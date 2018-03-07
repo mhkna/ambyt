@@ -8,7 +8,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'dotenv-rails', groups: [:development, :test]
-gem 'rails_admin', '~> 1.2'
+gem 'rails_admin', '~> 1.3.0'
 gem 'cancancan', '~> 2.0'
 gem "paperclip", "~> 5.2.1"
 gem 'aws-sdk', '~> 2.3'
