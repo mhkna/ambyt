@@ -17,7 +17,7 @@ gem 'devise', '~> 4.2'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'jquery-rails'
 gem 'acts_as_votable', '~> 0.11.1'
-gem 'geocoder'
+gem 'geocoder', '1.4.9'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'

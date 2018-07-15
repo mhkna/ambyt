@@ -10,8 +10,13 @@ class Post < ApplicationRecord
                      length: {
                                maximum: 750
                              }
-  validates :latitude, :longitude,  presence: true
-
+  validates :latitude, :longitude, presence: true
   geocoded_by :ip_address
-  before_validation :geocode
+
+  def set_lat_lon(ip_address)
+    results = Geocoder.search(ip_address)
+    self.latitude = results.first.latitude
+    self.longitude = results.first.longitude
+  end
+
 end

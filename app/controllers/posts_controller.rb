@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     if current_user_ip == '68.59.14.222'
       current_user_coords = [42.4257, -83.0437]
     else
-      current_user_coords = Geocoder.coordinates(current_user_ip)
+      current_user_coords = Geocoder.search(current_user_ip).first.coordinates
     end
 
     @posts = Post.near(current_user_coords, 100000, :order => false)
@@ -30,6 +30,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     @post.ip_address = remote_ip
+    @post.set_lat_lon(@post.ip_address)
 
     if @post.save
       redirect_to posts_path, notice: 'Post was successfully created.'

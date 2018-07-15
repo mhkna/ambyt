@@ -11,7 +11,7 @@
     <div class="post-content">
       <div class="author-details">
         <span class="user-id"><strong><%= name_or_anon(post) %></strong></span>
-        . <%= post.distance.round %> miles away
+        &nbsp<%= post.distance.round %> miles away
         . <%= time_ago_in_words(post.created_at, include_seconds: true) %> ago
       </div>
 
